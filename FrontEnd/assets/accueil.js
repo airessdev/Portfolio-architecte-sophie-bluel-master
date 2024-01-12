@@ -76,8 +76,54 @@ async function dispCat() {
     badgeElement.appendChild(pElement);
   }
 }
+async function dispCatButton() {
+  const myCat = await getCat();
+  const projets = document.getElementById("portfolio");
+  console.log(myCat);
+  console.log(projets);
 
+  const containerElement = document.createElement("div");
+  containerElement.classList.add("badgeContainer");
+  projets.insertBefore(containerElement, projets.childNodes[2]);
+  const tousDivElement = document.createElement("button");
+  tousDivElement.classList.add("badge");
+  tousDivElement.classList.add("tous");
+  const tousPElement = document.createElement("p");
+  tousPElement.innerText = "Tous";
+  containerElement.appendChild(tousDivElement);
+  tousDivElement.appendChild(tousPElement);
+
+  for (let indexCat in myCat) {
+    const badgeElement = document.createElement("button");
+    const pElement = document.createElement("p");
+    badgeElement.classList.add("badge");
+    badgeElement.classList.add("gen");
+    badgeElement.id = "c" + myCat[indexCat].id;
+    pElement.innerText = myCat[indexCat].name;
+    containerElement.appendChild(badgeElement);
+    badgeElement.appendChild(pElement);
+  }
+  const selId = document.getElementById("c1");
+  selId.addEventListener("click", () => {
+    cleanGallery();
+    dispWorksSelect(1);
+  });
+  const selId2 = document.getElementById("c2");
+  selId2.addEventListener("click", () => {
+    cleanGallery();
+    dispWorksSelect(2);
+  });
+  const selId3 = document.getElementById("c3");
+  selId3.addEventListener("click", () => {
+    cleanGallery();
+    dispWorksSelect(3);
+  });
+}
+
+//dispCat();
+dispCatButton();
 dispWorks();
-dispWorksSelect(3);
-
-dispCat();
+function cleanGallery() {
+  const gallery = document.querySelector(".gallery");
+  gallery.innerHTML = "";
+}
