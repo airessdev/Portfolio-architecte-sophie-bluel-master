@@ -5,43 +5,57 @@ async function getWorks() {
   return worksParse;
 }
 
-async function dispWorks() {
-  const myWorks = await getWorks();
-  const gallery = document.querySelector(".gallery");
-  console.log(myWorks);
-  for (let indexWork in myWorks) {
-    const figureElement = document.createElement("figure");
-    const imgElement = document.createElement("img");
-    const figcaptionElement = document.createElement("figcaption");
+// async function dispWorks() {
+//   const myWorks = await getWorks();
+//   const gallery = document.querySelector(".gallery");
+//   console.log(myWorks);
+//   for (let indexWork in myWorks) {
+//     const figureElement = document.createElement("figure");
+//     const imgElement = document.createElement("img");
+//     const figcaptionElement = document.createElement("figcaption");
+//     imgElement.src = myWorks[indexWork].imageUrl;
+//     figcaptionElement.innerText = myWorks[indexWork].title;
+//     figcaptionElement.id = myWorks[indexWork].categoryId;
+//     gallery.appendChild(figureElement);
+//     figureElement.appendChild(imgElement);
+//     figureElement.appendChild(figcaptionElement);
+//   }
+// }
+// async function dispWorksSelect(categroryIdParam) {
+//   const myWorks = await getWorks();
+//   const gallery = document.querySelector(".gallery");
 
-    imgElement.src = myWorks[indexWork].imageUrl;
-    figcaptionElement.innerText = myWorks[indexWork].title;
-    figcaptionElement.id = myWorks[indexWork].categoryId;
-    gallery.appendChild(figureElement);
-    figureElement.appendChild(imgElement);
-    figureElement.appendChild(figcaptionElement);
-  }
-}
-async function dispWorksSelect(categroryIdParam) {
-  const myWorks = await getWorks();
-  const gallery = document.querySelector(".gallery");
+//   console.log(myWorks);
+//   for (let indexWork in myWorks) {
+//     const figureElement = document.createElement("figure");
+//     const imgElement = document.createElement("img");
+//     const figcaptionElement = document.createElement("figcaption");
+//     imgElement.src = myWorks[indexWork].imageUrl;
+//     figcaptionElement.innerText = myWorks[indexWork].title;
+//     figcaptionElement.id = myWorks[indexWork].categoryId;
+//     if (figcaptionElement.id == categroryIdParam) {
+//       gallery.appendChild(figureElement);
+//       figureElement.appendChild(imgElement);
+//       figureElement.appendChild(figcaptionElement);
+//     }
+//   }
+// }
 
-  console.log(myWorks);
-  for (let indexWork in myWorks) {
-    const figureElement = document.createElement("figure");
-    const imgElement = document.createElement("img");
-    const figcaptionElement = document.createElement("figcaption");
-
-    imgElement.src = myWorks[indexWork].imageUrl;
-    figcaptionElement.innerText = myWorks[indexWork].title;
-    figcaptionElement.id = myWorks[indexWork].categoryId;
-    if (figcaptionElement.id == categroryIdParam) {
-      gallery.appendChild(figureElement);
-      figureElement.appendChild(imgElement);
-      figureElement.appendChild(figcaptionElement);
-    }
-  }
-}
+// const selectId = document.getElementById("c1");
+// selectId.addEventListener("click", () => {
+//   cleanGallery();
+//   dispWorksSelect(1);
+// });
+// const selectId2 = document.getElementById("c2");
+// selectId2.addEventListener("click", () => {
+//   cleanGallery();
+//   dispWorksSelect(2);
+// });
+// const selectId3 = document.getElementById("c3");
+// selectId3.addEventListener("click", () => {
+//   cleanGallery();
+//   dispWorksSelect(3);
+// });
 
 async function getCategory() {
   const category = await fetch("http://localhost:5678/api/categories");
@@ -49,7 +63,7 @@ async function getCategory() {
   return catParse;
 }
 
-async function dispCategory() {
+async function displayCategory() {
   const myCategory = await getCategory();
   const projets = document.getElementById("portfolio");
   console.log(myCategory);
@@ -77,7 +91,7 @@ async function dispCategory() {
   }
 }
 
-async function dispCategoryButton() {
+async function displayCategoryButton() {
   const myCategory = await getCategory();
   const containerSelect = document.querySelector(".badgeContainer");
   const allButtonElement = document.createElement("button");
@@ -97,36 +111,43 @@ async function dispCategoryButton() {
     containerSelect.appendChild(badgeButtonElement);
     badgeButtonElement.addEventListener("click", () => {
       cleanGallery();
-      dispWorksSelect(badgeButtonElement.id);
+      displayWorksSelectRe(badgeButtonElement.id);
     });
   }
   const selectIdAll = document.getElementById("c0");
   selectIdAll.addEventListener("click", () => {
     cleanGallery();
-    dispWorks();
+    displayWorksSelectRe(0);
   });
-
-  // const selectId = document.getElementById("c1");
-  // selectId.addEventListener("click", () => {
-  //   cleanGallery();
-  //   dispWorksSelect(1);
-  // });
-  // const selectId2 = document.getElementById("c2");
-  // selectId2.addEventListener("click", () => {
-  //   cleanGallery();
-  //   dispWorksSelect(2);
-  // });
-  // const selectId3 = document.getElementById("c3");
-  // selectId3.addEventListener("click", () => {
-  //   cleanGallery();
-  //   dispWorksSelect(3);
-  // });
 }
 function cleanGallery() {
   const gallery = document.querySelector(".gallery");
   gallery.innerHTML = "";
 }
+async function displayWorksSelectRe(categroryIdParam) {
+  const myWorks = await getWorks();
+  const gallery = document.querySelector(".gallery");
+  console.log(myWorks);
 
-//dispCat();
-dispCategoryButton();
-dispWorks();
+  for (let indexWork in myWorks) {
+    const figureElement = document.createElement("figure");
+    const imgElement = document.createElement("img");
+    const figcaptionElement = document.createElement("figcaption");
+    imgElement.src = myWorks[indexWork].imageUrl;
+    figcaptionElement.innerText = myWorks[indexWork].title;
+    figcaptionElement.id = myWorks[indexWork].categoryId;
+    if (figcaptionElement.id == categroryIdParam) {
+      gallery.appendChild(figureElement);
+      figureElement.appendChild(imgElement);
+      figureElement.appendChild(figcaptionElement);
+    }
+    if (categroryIdParam == 0) {
+      gallery.appendChild(figureElement);
+      figureElement.appendChild(imgElement);
+      figureElement.appendChild(figcaptionElement);
+    }
+  }
+}
+
+displayCategoryButton();
+displayWorksSelectRe(0);
