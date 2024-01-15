@@ -43,87 +43,89 @@ async function dispWorksSelect(categroryIdParam) {
   }
 }
 
-async function getCat() {
-  const cat = await fetch("http://localhost:5678/api/categories");
-  const catParse = await cat.json();
+async function getCategory() {
+  const category = await fetch("http://localhost:5678/api/categories");
+  const catParse = await category.json();
   return catParse;
 }
 
-async function dispCat() {
-  const myCat = await getCat();
+async function dispCategory() {
+  const myCategory = await getCategory();
   const projets = document.getElementById("portfolio");
-  console.log(myCat);
+  console.log(myCategory);
   console.log(projets);
   const containerElement = document.createElement("div");
   containerElement.classList.add("badgeContainer");
   projets.insertBefore(containerElement, projets.childNodes[2]);
-  const tousDivElement = document.createElement("div");
-  tousDivElement.classList.add("badge");
-  tousDivElement.classList.add("tous");
-  const tousPElement = document.createElement("p");
-  tousPElement.innerText = "Tous";
-  containerElement.appendChild(tousDivElement);
-  tousDivElement.appendChild(tousPElement);
+  const allDivElement = document.createElement("div");
+  allDivElement.classList.add("badge");
+  allDivElement.classList.add("tous");
+  const allPElement = document.createElement("p");
+  allPElement.innerText = "Tous";
+  containerElement.appendChild(allDivElement);
+  allDivElement.appendChild(allPElement);
 
-  for (let indexCat in myCat) {
+  for (let indexCategory in myCategory) {
     const badgeElement = document.createElement("div");
     const pElement = document.createElement("p");
     badgeElement.classList.add("badge");
     badgeElement.classList.add("gen");
-    badgeElement.id = "c" + myCat[indexCat].id;
-    pElement.innerText = myCat[indexCat].name;
+    badgeElement.id = "c" + myCategory[indexCategory].id;
+    pElement.innerText = myCategory[indexCategory].name;
     containerElement.appendChild(badgeElement);
     badgeElement.appendChild(pElement);
   }
 }
-async function dispCatButton() {
-  const myCat = await getCat();
-  const projets = document.getElementById("portfolio");
-  console.log(myCat);
-  console.log(projets);
 
+async function dispCategoryButton() {
+  const myCategory = await getCategory();
+  const projets = document.getElementById("portfolio");
   const containerElement = document.createElement("div");
   containerElement.classList.add("badgeContainer");
   projets.insertBefore(containerElement, projets.childNodes[2]);
-  const tousDivElement = document.createElement("button");
-  tousDivElement.classList.add("badge");
-  tousDivElement.classList.add("tous");
-  const tousPElement = document.createElement("p");
-  tousPElement.innerText = "Tous";
-  containerElement.appendChild(tousDivElement);
-  tousDivElement.appendChild(tousPElement);
+  const allButtonElement = document.createElement("button");
+  allButtonElement.id = "c0";
+  allButtonElement.classList.add("badge");
+  allButtonElement.classList.add("all");
+  allButtonElement.innerText = "Tous";
+  containerElement.appendChild(allButtonElement);
 
-  for (let indexCat in myCat) {
-    const badgeElement = document.createElement("button");
-    const pElement = document.createElement("p");
-    badgeElement.classList.add("badge");
-    badgeElement.classList.add("gen");
-    badgeElement.id = "c" + myCat[indexCat].id;
-    pElement.innerText = myCat[indexCat].name;
-    containerElement.appendChild(badgeElement);
-    badgeElement.appendChild(pElement);
+  for (let indexCategory in myCategory) {
+    const badgeButtonElement = document.createElement("button");
+    badgeButtonElement.classList.add("badge");
+    badgeButtonElement.classList.add("gen");
+    badgeButtonElement.id = "c" + myCategory[indexCategory].id;
+    badgeButtonElement.setAttribute("type", "button");
+    badgeButtonElement.innerText = myCategory[indexCategory].name;
+    containerElement.appendChild(badgeButtonElement);
   }
-  const selId = document.getElementById("c1");
-  selId.addEventListener("click", () => {
+  const selectIdAll = document.getElementById("c0");
+  selectIdAll.addEventListener("click", () => {
+    cleanGallery();
+    dispWorks();
+  });
+
+  const selectId = document.getElementById("c1");
+  selectId.addEventListener("click", () => {
     cleanGallery();
     dispWorksSelect(1);
   });
-  const selId2 = document.getElementById("c2");
-  selId2.addEventListener("click", () => {
+  const selectId2 = document.getElementById("c2");
+  selectId2.addEventListener("click", () => {
     cleanGallery();
     dispWorksSelect(2);
   });
-  const selId3 = document.getElementById("c3");
-  selId3.addEventListener("click", () => {
+  const selectId3 = document.getElementById("c3");
+  selectId3.addEventListener("click", () => {
     cleanGallery();
     dispWorksSelect(3);
   });
 }
-
-//dispCat();
-dispCatButton();
-dispWorks();
 function cleanGallery() {
   const gallery = document.querySelector(".gallery");
   gallery.innerHTML = "";
 }
+
+//dispCat();
+dispCategoryButton();
+dispWorks();
