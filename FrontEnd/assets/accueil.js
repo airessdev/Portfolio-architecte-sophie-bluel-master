@@ -72,8 +72,7 @@ async function displayCategory() {
   containerElement.classList.add("badgeContainer");
   projets.insertBefore(containerElement, projets.childNodes[2]);
   const allDivElement = document.createElement("div");
-  allDivElement.classList.add("badge");
-  allDivElement.classList.add("tous");
+  allDivElement.classList.add("badge", "tous");
   const allPElement = document.createElement("p");
   allPElement.innerText = "Tous";
   containerElement.appendChild(allDivElement);
@@ -82,8 +81,7 @@ async function displayCategory() {
   for (let indexCategory in myCategory) {
     const badgeElement = document.createElement("div");
     const pElement = document.createElement("p");
-    badgeElement.classList.add("badge");
-    badgeElement.classList.add("gen");
+    badgeElement.classList.add("badge", "gen");
     badgeElement.id = "c" + myCategory[indexCategory].id;
     pElement.innerText = myCategory[indexCategory].name;
     containerElement.appendChild(badgeElement);
@@ -96,15 +94,13 @@ async function displayCategoryButton() {
   const containerSelect = document.querySelector(".badgeContainer");
   const allButtonElement = document.createElement("button");
   allButtonElement.id = "c0";
-  allButtonElement.classList.add("badge");
-  allButtonElement.classList.add("all");
+  allButtonElement.classList.add("badge", "all");
   allButtonElement.innerText = "Tous";
   containerSelect.appendChild(allButtonElement);
 
   for (let indexCategory in myCategory) {
     const badgeButtonElement = document.createElement("button");
-    badgeButtonElement.classList.add("badge");
-    badgeButtonElement.classList.add("gen");
+    badgeButtonElement.classList.add("badge", "gen");
     badgeButtonElement.id = myCategory[indexCategory].id;
     badgeButtonElement.setAttribute("type", "button");
     badgeButtonElement.innerText = myCategory[indexCategory].name;
@@ -149,5 +145,31 @@ async function displayWorksSelectRe(categroryIdParam) {
   }
 }
 
+async function displayWorksSelectRe2(categroryIdParam) {
+  const myWorks = await getWorks();
+  const gallery = document.querySelector(".gallery");
+  console.log(myWorks);
+
+  for (let work of myWorks) {
+    const figureElement = document.createElement("figure");
+    const imgElement = document.createElement("img");
+    const figcaptionElement = document.createElement("figcaption");
+    imgElement.src = work.imageUrl;
+    figcaptionElement.innerText = work.title;
+    figcaptionElement.id = work.categoryId;
+    if (figcaptionElement.id == categroryIdParam) {
+      gallery.appendChild(figureElement);
+      figureElement.appendChild(imgElement);
+      figureElement.appendChild(figcaptionElement);
+    }
+    if (categroryIdParam == 0) {
+      gallery.appendChild(figureElement);
+      figureElement.appendChild(imgElement);
+      figureElement.appendChild(figcaptionElement);
+    }
+  }
+}
+
 displayCategoryButton();
-displayWorksSelectRe(0);
+//displayWorksSelectRe(0);
+displayWorksSelectRe2(0);

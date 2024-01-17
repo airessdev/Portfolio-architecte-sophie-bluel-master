@@ -139,6 +139,7 @@ header {
   justify-content: space-between;
   margin: 50px 0;
 }
+
 section {
   margin: 50px 0;
 }
@@ -303,4 +304,94 @@ footer nav ul {
 }
 .off {
   display: none;
+}
+
+/* login */
+header a {
+  text-decoration: none;
+}
+.connexion {
+  width: 50%;
+  padding: 10% 25%;
+  display: flex;
+  flex-direction: column;
+}
+
+.connexion h2 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+.connexion h3 {
+  margin: 20px 0;
+}
+
+.form {
+  width: 100%;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  border: transparent;
+  padding: 15px 0;
+  margin-bottom: 30px;
+  margin-top: 5px;
+}
+
+.button_connexion {
+  width: 40%;
+  background: #1d6154;
+  border-radius: 60px;
+  margin: 20px 30%;
+  color: white;
+  padding: 7px;
+  border: 0px solid transparent;
+  font-family: "syne";
+  cursor: pointer;
+}
+.connexion a {
+  text-align: center;
+  color: black;
+}
+
+#login-submit {
+  width: 40%;
+  margin: 20px 30%;
+  padding: 10px;
+}
+
+.filter {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+button.filter_element {
+  min-width: 100px;
+  padding: 10px;
+  background: none;
+  border: 1px solid #1d6154;
+  border-radius: 60px;
+  color: #1d6154;
+  margin: 0 10px;
+  font-family: "Syne";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+}
+
+.filter_element.active,
+.filter_element:hover {
+  color: white;
+  background-color: #1d6154;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+}
+
+#login-error {
+  border: 2px solid red;
+  padding: 10px;
+  color: red;
+  border-radius: 10px;
 }

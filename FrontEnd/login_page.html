@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=P, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <script src="../FrontEnd/login.js" defer async></script>
+
+    <title>Page connexion</title>
+  </head>
+  <body>
+    <header>
+      <a href="../FrontEnd/index.html"
+        ><h1>Sophie Bluel <span>Architecte d'intérieur</span></h1></a
+      >
+      <nav>
+        <ul>
+          <a href="./index.html"><li>projets</li></a>
+          <a href="./index.html#contact"><li>contact</li></a>
+          <li>login</li>
+          <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="connexion">
+      <h2>Log in</h2>
+
+      <form name="loginform">
+        <label>E-mail</label>
+        <input id="signin-email" type="email" name="email" class="form" />
+        <label>Mot de passe</label>
+        <input
+          id="signin-password"
+          type="password"
+          name="password"
+          class="form"
+        />
+        <p id="login-error" hidden></p>
+        <input
+          id="login-submit"
+          type="submit"
+          value="Se connecter"
+          class="button_connexion"
+        />
+      </form>
+
+      <br />
+      <a href="#"><span>Mot de passe oublié</span></a>
+    </section>
+    <footer>
+      <nav>
+        <ul>
+          <li>Mentions Légales</li>
+        </ul>
+      </nav>
+    </footer>
+  </body>
+</html>
