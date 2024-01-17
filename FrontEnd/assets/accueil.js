@@ -1,6 +1,5 @@
 async function getWorks() {
   const works = await fetch("http://localhost:5678/api/works");
-
   const worksParse = await works.json();
   return worksParse;
 }
@@ -56,37 +55,86 @@ async function getWorks() {
 //   cleanGallery();
 //   dispWorksSelect(3);
 // });
+//async function displayCategory() {
+//   const myCategory = await getCategory();
+//   const projets = document.getElementById("portfolio");
+//   const containerElement = document.createElement("div");
+//   containerElement.classList.add("badgeContainer");
+//   projets.insertBefore(containerElement, projets.childNodes[2]);
+//   const allDivElement = document.createElement("div");
+//   allDivElement.classList.add("badge", "tous");
+//   const allPElement = document.createElement("p");
+//   allPElement.innerText = "Tous";
+//   containerElement.appendChild(allDivElement);
+//   allDivElement.appendChild(allPElement);
+
+//   for (let indexCategory in myCategory) {
+//     const badgeElement = document.createElement("div");
+//     const pElement = document.createElement("p");
+//     badgeElement.classList.add("badge", "gen");
+//     badgeElement.id = "c" + myCategory[indexCategory].id;
+//     pElement.innerText = myCategory[indexCategory].name;
+//     containerElement.appendChild(badgeElement);
+//     badgeElement.appendChild(pElement);
+//   }
+// }
+//async function displayWorksSelectRe(categroryIdParam) {
+//   const myWorks = await getWorks();
+//   const gallery = document.querySelector(".gallery");
+//   console.log(myWorks);
+
+//   for (let indexWork in myWorks) {
+//     const figureElement = document.createElement("figure");
+//     const imgElement = document.createElement("img");
+//     const figcaptionElement = document.createElement("figcaption");
+//     imgElement.src = myWorks[indexWork].imageUrl;
+//     figcaptionElement.innerText = myWorks[indexWork].title;
+//     figcaptionElement.id = myWorks[indexWork].categoryId;
+//     if (figcaptionElement.id == categroryIdParam) {
+//       gallery.appendChild(figureElement);
+//       figureElement.appendChild(imgElement);
+//       figureElement.appendChild(figcaptionElement);
+//     }
+//     if (categroryIdParam == 0) {
+//       gallery.appendChild(figureElement);
+//       figureElement.appendChild(imgElement);
+//       figureElement.appendChild(figcaptionElement);
+//     }
+//   }
+// }
+
+// async function displayCategoryButton2() {
+//   const myCategory = await getCategory();
+//   const containerSelect = document.querySelector(".badgeContainer");
+//   const allButtonElement = document.createElement("button");
+//   allButtonElement.id = "c0";
+//   allButtonElement.classList.add("badge", "all");
+//   allButtonElement.innerText = "Tous";
+//   containerSelect.appendChild(allButtonElement);
+
+//   for (let indexCategory in myCategory) {
+//     const badgeButtonElement = document.createElement("button");
+//     badgeButtonElement.classList.add("badge", "gen");
+//     badgeButtonElement.id = myCategory[indexCategory].id;
+//     badgeButtonElement.setAttribute("type", "button");
+//     badgeButtonElement.innerText = myCategory[indexCategory].name;
+//     containerSelect.appendChild(badgeButtonElement);
+//     badgeButtonElement.addEventListener("click", () => {
+//       cleanGallery();
+//       displayWorks(badgeButtonElement.id);
+//     });
+//   }
+//   const selectIdAll = document.getElementById("c0");
+//   selectIdAll.addEventListener("click", () => {
+//     cleanGallery();
+//     displayWorks(0);
+//   });
+// }
 
 async function getCategory() {
   const category = await fetch("http://localhost:5678/api/categories");
   const catParse = await category.json();
   return catParse;
-}
-
-async function displayCategory() {
-  const myCategory = await getCategory();
-  const projets = document.getElementById("portfolio");
-  console.log(myCategory);
-  console.log(projets);
-  const containerElement = document.createElement("div");
-  containerElement.classList.add("badgeContainer");
-  projets.insertBefore(containerElement, projets.childNodes[2]);
-  const allDivElement = document.createElement("div");
-  allDivElement.classList.add("badge", "tous");
-  const allPElement = document.createElement("p");
-  allPElement.innerText = "Tous";
-  containerElement.appendChild(allDivElement);
-  allDivElement.appendChild(allPElement);
-
-  for (let indexCategory in myCategory) {
-    const badgeElement = document.createElement("div");
-    const pElement = document.createElement("p");
-    badgeElement.classList.add("badge", "gen");
-    badgeElement.id = "c" + myCategory[indexCategory].id;
-    pElement.innerText = myCategory[indexCategory].name;
-    containerElement.appendChild(badgeElement);
-    badgeElement.appendChild(pElement);
-  }
 }
 
 async function displayCategoryButton() {
@@ -98,57 +146,33 @@ async function displayCategoryButton() {
   allButtonElement.innerText = "Tous";
   containerSelect.appendChild(allButtonElement);
 
-  for (let indexCategory in myCategory) {
+  for (let category of myCategory) {
     const badgeButtonElement = document.createElement("button");
     badgeButtonElement.classList.add("badge", "gen");
-    badgeButtonElement.id = myCategory[indexCategory].id;
+    badgeButtonElement.id = category.id;
     badgeButtonElement.setAttribute("type", "button");
-    badgeButtonElement.innerText = myCategory[indexCategory].name;
+    badgeButtonElement.innerText = category.name;
     containerSelect.appendChild(badgeButtonElement);
     badgeButtonElement.addEventListener("click", () => {
       cleanGallery();
-      displayWorksSelectRe(badgeButtonElement.id);
+      displayWorks(badgeButtonElement.id);
     });
   }
   const selectIdAll = document.getElementById("c0");
   selectIdAll.addEventListener("click", () => {
     cleanGallery();
-    displayWorksSelectRe(0);
+    displayWorks(0);
   });
 }
+
 function cleanGallery() {
   const gallery = document.querySelector(".gallery");
   gallery.innerHTML = "";
 }
-async function displayWorksSelectRe(categroryIdParam) {
+
+async function displayWorks(categroryIdParam) {
   const myWorks = await getWorks();
   const gallery = document.querySelector(".gallery");
-  console.log(myWorks);
-
-  for (let indexWork in myWorks) {
-    const figureElement = document.createElement("figure");
-    const imgElement = document.createElement("img");
-    const figcaptionElement = document.createElement("figcaption");
-    imgElement.src = myWorks[indexWork].imageUrl;
-    figcaptionElement.innerText = myWorks[indexWork].title;
-    figcaptionElement.id = myWorks[indexWork].categoryId;
-    if (figcaptionElement.id == categroryIdParam) {
-      gallery.appendChild(figureElement);
-      figureElement.appendChild(imgElement);
-      figureElement.appendChild(figcaptionElement);
-    }
-    if (categroryIdParam == 0) {
-      gallery.appendChild(figureElement);
-      figureElement.appendChild(imgElement);
-      figureElement.appendChild(figcaptionElement);
-    }
-  }
-}
-
-async function displayWorksSelectRe2(categroryIdParam) {
-  const myWorks = await getWorks();
-  const gallery = document.querySelector(".gallery");
-  console.log(myWorks);
 
   for (let work of myWorks) {
     const figureElement = document.createElement("figure");
@@ -171,5 +195,4 @@ async function displayWorksSelectRe2(categroryIdParam) {
 }
 
 displayCategoryButton();
-//displayWorksSelectRe(0);
-displayWorksSelectRe2(0);
+displayWorks(0);
