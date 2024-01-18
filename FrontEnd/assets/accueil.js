@@ -140,6 +140,7 @@ async function getCategory() {
 async function displayCategoryButton() {
   const myCategory = await getCategory();
   const containerSelect = document.querySelector(".badgeContainer");
+
   const allButtonElement = document.createElement("button");
   allButtonElement.id = "c0";
   allButtonElement.classList.add("badge", "all");
@@ -193,6 +194,19 @@ async function displayWorks(categroryIdParam) {
     }
   }
 }
+function isAdmin() {
+  let admin = false;
+  if (localStorage.getItem("monToken")) {
+    admin = true;
+
+    const adminHidding = document.querySelectorAll(".test");
+    console.log(adminHidding);
+    for (let element of adminHidding) {
+      element.classList.add("hidden-admin");
+    }
+  }
+}
 
 displayCategoryButton();
 displayWorks(0);
+isAdmin();

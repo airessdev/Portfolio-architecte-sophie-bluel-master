@@ -395,3 +395,10 @@ nav a {
   color: red;
   border-radius: 10px;
 }
+
+.hidden-admin {
+  display: none;
+}
+.hidden-error {
+  display: none;
+}
