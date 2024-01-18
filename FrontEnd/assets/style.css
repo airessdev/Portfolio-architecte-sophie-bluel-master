@@ -402,3 +402,12 @@ nav a {
 .hidden-error {
   display: none;
 }
+.edit-projet {
+  color: #000;
+  text-align: center;
+  font-family: "Work Sans";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

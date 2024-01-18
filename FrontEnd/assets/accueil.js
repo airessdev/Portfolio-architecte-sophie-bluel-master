@@ -204,6 +204,11 @@ function isAdmin() {
     for (let element of adminHidding) {
       element.classList.add("hidden-admin");
     }
+  } else {
+    const notAdmin = document.querySelectorAll(".test2");
+    for (let element of notAdmin) {
+      element.classList.add("hidden-admin");
+    }
   }
 }
 
