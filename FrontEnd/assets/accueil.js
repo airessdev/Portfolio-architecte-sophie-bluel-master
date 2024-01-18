@@ -133,8 +133,8 @@ async function getWorks() {
 
 async function getCategory() {
   const category = await fetch("http://localhost:5678/api/categories");
-  const catParse = await category.json();
-  return catParse;
+  const categoryParse = await category.json();
+  return categoryParse;
 }
 
 async function displayCategoryButton() {
