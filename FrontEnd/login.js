@@ -27,14 +27,15 @@ async function postData(url = "", data = { email: "", password: "" }) {
     //window.location.href = "index.html"
     alert("all good");
   }
-  if (response.status == 401) {
-    alert(response.statusText);
-  }
-  if (response.status == 404) {
-    alert("User " + response.statusText);
-  }
+  // if (response.status == 401) {
 
-  return response.json(); // parses JSON response into native JavaScript objects
+  // }
+  // if (response.status == 404) {
+
+  // }
+
+  return response.json();
+  // parses JSON response into native JavaScript objects
   // objet code http
 }
 
@@ -56,8 +57,14 @@ async function login() {
     "http://localhost:5678/api/users/login",
     emailPassword
   );
-  localStorage.setItem("monToken", data.token);
-  window.location.href = "index.html";
+  if (data.token == null) {
+    const error = document.querySelector(".hidden-error");
+    error.classList.remove("hidden-error");
+    error.innerText = "Email ou mot de passe incorrect";
+  } else {
+    localStorage.setItem("monToken", data.token);
+    window.location.href = "index.html";
+  }
 
   //token ok
 }

@@ -196,18 +196,19 @@ async function displayWorks(categroryIdParam) {
 }
 function isAdmin() {
   let admin = false;
-  if (localStorage.getItem("monToken")) {
+
+  if (localStorage.getItem("monToken") != null) {
     admin = true;
 
-    const adminHidding = document.querySelectorAll(".test");
+    const adminHidding = document.querySelectorAll(".isUser");
     console.log(adminHidding);
     for (let element of adminHidding) {
-      element.classList.add("hidden-admin");
+      element.classList.add("hidden");
     }
   } else {
-    const notAdmin = document.querySelectorAll(".test2");
+    const notAdmin = document.querySelectorAll(".isAdmin");
     for (let element of notAdmin) {
-      element.classList.add("hidden-admin");
+      element.classList.add("hidden");
     }
   }
 }

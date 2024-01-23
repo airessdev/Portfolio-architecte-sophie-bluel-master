@@ -402,6 +402,9 @@ nav a {
 .hidden-error {
   display: none;
 }
+.hidden {
+  display: none;
+}
 .edit-projet {
   color: #000;
   text-align: center;
