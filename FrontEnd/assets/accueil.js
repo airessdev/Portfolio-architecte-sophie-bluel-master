@@ -194,14 +194,13 @@ async function displayWorks(categroryIdParam) {
     }
   }
 }
-function isAdmin() {
+function toggleAdmin() {
   let admin = false;
 
   if (localStorage.getItem("monToken") != null) {
     admin = true;
 
     const adminHidding = document.querySelectorAll(".isUser");
-    console.log(adminHidding);
     for (let element of adminHidding) {
       element.classList.add("hidden");
     }
@@ -212,7 +211,32 @@ function isAdmin() {
     }
   }
 }
+function editModal() {
+  const dialogModal = document.getElementById("modal");
+  dialogModal.showModal();
+  const closeButton = document.getElementById("closeButton");
+  closeButton.onclick = function () {
+    modal.style.display = "none";
+  };
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+  displayWorksModal();
+}
+async function displayWorksModal() {
+  const myWorks = await getWorks();
+  const gallery = document.querySelector(".modalWorks");
+  for (let work of myWorks) {
+    const figureElement = document.createElement("figure");
+    const imgElement = document.createElement("img");
+    imgElement.src = work.imageUrl;
+    gallery.appendChild(figureElement);
+    figureElement.appendChild(imgElement);
+  }
+}
 
 displayCategoryButton();
 displayWorks(0);
-isAdmin();
+toggleAdmin();

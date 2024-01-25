@@ -414,3 +414,36 @@ nav a {
   font-weight: 400;
   line-height: normal;
 }
+.modal {
+  position: relative;
+  width: 630px;
+  height: 688px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+.modal p {
+  padding-top: 60px;
+  color: #000;
+  text-align: center;
+  font-family: "Work Sans";
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.modal .cross {
+  position: absolute;
+  top: 26px;
+  right: 30px;
+}
+.modalWorks {
+  display: flex;
+  gap: 10px;
+  width: 630px;
+  height: 688px;
+  flex-wrap: wrap;
+}
+.modalWorks img {
+  height: 10%;
+  width: 10%;
+}

@@ -60,95 +60,31 @@
       <section id="portfolio">
         <h2>
           Mes Projets
-          <a class="edit-projet isAdmin">
+          <a class="edit-projet isAdmin" onclick="editModal()"
+            ><dialog id="modal" class="modal">
+              <div class="cross" id="closeButton">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M17.6546 8.05106C18.1235 7.58214 18.1235 6.82061 17.6546 6.35169C17.1856 5.88277 16.4241 5.88277 15.9552 6.35169L12.005 10.3056L8.05106 6.35544C7.58214 5.88652 6.82061 5.88652 6.35169 6.35544C5.88277 6.82436 5.88277 7.58589 6.35169 8.05481L10.3056 12.005L6.35544 15.9589C5.88652 16.4279 5.88652 17.1894 6.35544 17.6583C6.82436 18.1272 7.58589 18.1272 8.05481 17.6583L12.005 13.7044L15.9589 17.6546C16.4279 18.1235 17.1894 18.1235 17.6583 17.6546C18.1272 17.1856 18.1272 16.4241 17.6583 15.9552L13.7044 12.005L17.6546 8.05106Z"
+                    fill="black"
+                  />
+                </svg>
+              </div>
+              <p>Galerie photo</p>
+              <div class="modalWorks"></div>
+            </dialog>
             <i class="fa-sharp fa-solid fa-pen-to-square"></i> Modifier</a
           >
         </h2>
-        <div class="badgeContainer isUser">
-          <!-- <div class="badge Tous">
-            <p>Tous</p>
-          </div>
-          <div class="badge Objets"><p>Objets</p></div>
-          <div class="badge appartement"><p>Appartements</p></div>
-          <div class="badge hotel"><p>Hotels & Restaurants</p></div>  -->
-        </div>
+        <div class="badgeContainer isUser"></div>
 
-        <div class="gallery">
-          <!-- <figure>
-            <img src="assets/images/abajour-tahina.png" alt="Abajour Tahina" />
-            <figcaption>Abajour Tahina</figcaption>
-          </figure>
-          <figure>
-            <img
-              src="assets/images/appartement-paris-v.png"
-              alt="Appartement Paris V"
-            />
-            <figcaption>Appartement Paris V</figcaption>
-          </figure>
-          <figure>
-            <img
-              src="assets/images/restaurant-sushisen-londres.png"
-              alt="Restaurant Sushisen - Londres"
-            />
-            <figcaption>Restaurant Sushisen - Londres</figcaption>
-          </figure>
-          <figure>
-            <img
-              src="assets/images/la-balisiere.png"
-              alt="Villa “La Balisiere” - Port Louis"
-            />
-            <figcaption>Villa “La Balisiere” - Port Louis</figcaption>
-          </figure>
-          <figure>
-            <img
-              src="assets/images/structures-thermopolis.png"
-              alt="Structures Thermopolis"
-            />
-            <figcaption>Structures Thermopolis</figcaption>
-          </figure>
-          <figure>
-            <img
-              src="assets/images/appartement-paris-x.png"
-              alt="Appartement Paris X"
-            />
-            <figcaption>Appartement Paris X</figcaption>
-          </figure>
-          <figure>
-            <img
-              src="assets/images/le-coteau-cassis.png"
-              alt="Pavillon “Le coteau” - Cassis"
-            />
-            <figcaption>Pavillon “Le coteau” - Cassis</figcaption>
-          </figure>
-          <figure>
-            <img
-              src="assets/images/villa-ferneze.png"
-              alt="Villa Ferneze - Isola d’Elba"
-            />
-            <figcaption>Villa Ferneze - Isola d’Elba</figcaption>
-          </figure>
-          <figure>
-            <img
-              src="assets/images/appartement-paris-xviii.png"
-              alt="Appartement Paris XVIII"
-            />
-            <figcaption>Appartement Paris XVIII</figcaption>
-          </figure>
-          <figure>
-            <img
-              src="assets/images/bar-lullaby-paris.png"
-              alt="Bar “Lullaby” - Paris"
-            />
-            <figcaption>Bar “Lullaby” - Paris</figcaption>
-          </figure>
-          <figure>
-            <img
-              src="assets/images/hotel-first-arte-new-delhi.png"
-              alt="Hotel First Arte - New Delhi"
-            />
-            <figcaption>Hotel First Arte - New Delhi</figcaption>
-          </figure> -->
-        </div>
+        <div class="gallery"></div>
       </section>
       <section id="contact">
         <h2>Contact</h2>
