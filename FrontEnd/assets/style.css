@@ -434,7 +434,7 @@ nav a {
   font-weight: 400;
   line-height: normal;
 }
-.modal .cross {
+.modal .fa-xmark {
   position: absolute;
   top: 26px;
   right: 30px;
@@ -468,4 +468,26 @@ nav a {
 .modalWorks img {
   width: 78px;
   height: 104px;
+}
+.modalLine {
+  margin-top: 50px;
+  width: 420px;
+  height: 1px;
+  background: #b3b3b3;
+}
+.modalAddPicture {
+  display: flex;
+  border-radius: 60px;
+  background: #1d6154;
+  align-items: center;
+  justify-content: center;
+}
+.modalAddPicture p {
+  color: #fff;
+  text-align: center;
+  font-family: Syne;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }

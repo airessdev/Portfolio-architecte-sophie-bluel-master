@@ -212,17 +212,18 @@ function toggleAdmin() {
   }
 }
 function editModal() {
+  const edit = document.getElementById("edit");
   const dialogModal = document.getElementById("modal");
-  dialogModal.showModal();
   const closeButton = document.getElementById("closeButton");
-  closeButton.onclick = function () {
-    modal.style.display = "none";
-  };
-  window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  };
+  edit.addEventListener("click", () => {
+    dialogModal.showModal();
+  });
+
+  closeButton.addEventListener("click", () => {
+    console.log("test");
+    dialogModal.style.display = "none";
+  });
+
   displayWorksModal();
 }
 
@@ -244,3 +245,4 @@ async function displayWorksModal() {
 displayCategoryButton();
 displayWorks(0);
 toggleAdmin();
+editModal();
