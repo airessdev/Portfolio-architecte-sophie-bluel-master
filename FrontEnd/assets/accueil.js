@@ -225,15 +225,19 @@ function editModal() {
   };
   displayWorksModal();
 }
+
 async function displayWorksModal() {
   const myWorks = await getWorks();
   const gallery = document.querySelector(".modalWorks");
   for (let work of myWorks) {
+    const iconElement = document.createElement("i");
+    iconElement.classList.add("fa-solid", "fa-trash-can", "trash", "carre");
     const figureElement = document.createElement("figure");
     const imgElement = document.createElement("img");
     imgElement.src = work.imageUrl;
     gallery.appendChild(figureElement);
     figureElement.appendChild(imgElement);
+    figureElement.appendChild(iconElement);
   }
 }
 
