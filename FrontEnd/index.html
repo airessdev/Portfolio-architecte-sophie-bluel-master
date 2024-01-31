@@ -61,14 +61,6 @@
         <h2>
           Mes Projets
           <a class="edit-projet isAdmin" id="edit">
-            <dialog id="modal" class="modal">
-              <i class="fa-sharp fa-solid fa-xmark" id="closeButton"></i>
-
-              <p>Galerie photo</p>
-              <div class="modalWorks"></div>
-              <div class="modalLine"></div>
-              <div class="modalAddPicture">Ajouter une photo</div>
-            </dialog>
             <i class="fa-sharp fa-solid fa-pen-to-square"></i>
             Modifier
           </a>
@@ -100,5 +92,16 @@
         </ul>
       </nav>
     </footer>
+    <!-- modal  -->
+    <dialog id="modal" class="modal">
+      <div class="wrapModal">
+        <i class="fa-sharp fa-solid fa-xmark" id="closeButton"></i>
+
+        <p>Galerie photo</p>
+        <div class="modalWorks"></div>
+        <div class="modalLine"></div>
+        <button class="modalAddPicture">Ajouter une photo</button>
+      </div>
+    </dialog>
   </body>
 </html>

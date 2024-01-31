@@ -221,7 +221,12 @@ function editModal() {
 
   closeButton.addEventListener("click", () => {
     console.log("test");
-    dialogModal.style.display = "none";
+    dialogModal.close();
+  });
+  window.addEventListener("click", (event) => {
+    if (event.target == dialogModal) {
+      dialogModal.style.display = "none";
+    }
   });
 
   displayWorksModal();
@@ -231,6 +236,8 @@ async function displayWorksModal() {
   const myWorks = await getWorks();
   const gallery = document.querySelector(".modalWorks");
   for (let work of myWorks) {
+    const divElement = document.createElement("div");
+    divElement.classList.add("wrapTrash");
     const iconElement = document.createElement("i");
     iconElement.classList.add("fa-solid", "fa-trash-can", "trash", "carre");
     const figureElement = document.createElement("figure");
@@ -238,7 +245,8 @@ async function displayWorksModal() {
     imgElement.src = work.imageUrl;
     gallery.appendChild(figureElement);
     figureElement.appendChild(imgElement);
-    figureElement.appendChild(iconElement);
+    figureElement.appendChild(divElement);
+    divElement.appendChild(iconElement);
   }
 }
 

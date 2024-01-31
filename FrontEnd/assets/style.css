@@ -422,6 +422,11 @@ nav a {
   padding: 0 105px;
   border-radius: 10px;
   background-color: #fff;
+  border: none;
+}
+.wrapModal {
+  display: flex;
+  flex-direction: column;
 }
 .modal p {
   padding-top: 60px;
@@ -441,28 +446,27 @@ nav a {
 }
 
 .modalWorks {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  justify-items: center;
+}
+.modalWorks figure {
+  position: relative;
+}
+.wrapTrash {
+  position: absolute;
   display: flex;
-  flex-wrap: wrap;
-  row-gap: 20px;
-  column-gap: 5px;
   justify-content: center;
+  align-items: center;
+  top: 5px;
+  right: 5px;
+  width: 15px;
+  height: 15px;
+  background: #000;
 }
 .modalWorks .trash {
   color: #fff;
   font-size: 10px;
-  vertical-align: middle;
-
-  /* top: -80px;
-  left: -20px; */
-}
-.modalWorks .carre {
-  position: relative;
-
-  top: -90px;
-  left: -20px;
-  width: 15px;
-  height: 15px;
-  background: black;
 }
 
 .modalWorks img {
@@ -476,18 +480,16 @@ nav a {
   background: #b3b3b3;
 }
 .modalAddPicture {
-  display: flex;
-  border-radius: 60px;
-  background: #1d6154;
-  align-items: center;
-  justify-content: center;
-}
-.modalAddPicture p {
-  color: #fff;
-  text-align: center;
-  font-family: Syne;
-  font-size: 14px;
-  font-style: normal;
+  height: 50px;
+  font-size: 1.2em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  font-family: "Syne";
   font-weight: 700;
-  line-height: normal;
+  color: white;
+  background-color: #1d6154;
+  margin: 2em auto;
+  width: 180px;
+  text-align: center;
+  border-radius: 60px;
 }
