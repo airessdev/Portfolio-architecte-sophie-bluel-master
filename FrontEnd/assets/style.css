@@ -424,11 +424,14 @@ nav a {
   background-color: #fff;
   border: none;
 }
+.modal::backdrop {
+  background: #000;
+}
 .wrapModal {
   display: flex;
   flex-direction: column;
 }
-.modal p {
+.wrapModal p {
   padding-top: 60px;
   padding-bottom: 46px;
   color: #000;
@@ -439,10 +442,15 @@ nav a {
   font-weight: 400;
   line-height: normal;
 }
-.modal .fa-xmark {
+.wrapModal .fa-xmark {
   position: absolute;
   top: 26px;
   right: 30px;
+}
+.wrapModal .fa-arrow-left {
+  position: absolute;
+  top: 26px;
+  left: 30px;
 }
 
 .modalWorks {
@@ -480,6 +488,7 @@ nav a {
   background: #b3b3b3;
 }
 .modalAddPicture {
+  border: none;
   height: 50px;
   font-size: 1.2em;
   border: none;
@@ -492,4 +501,92 @@ nav a {
   width: 180px;
   text-align: center;
   border-radius: 60px;
+}
+
+.modalWrapAddPicture {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 420px;
+}
+.modalWrapAddPicture p {
+  font-family: Work Sans;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+.uploadWrapper {
+  display: flex;
+  flex-direction: column;
+  background: #e8f1f6;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  width: 420px;
+  height: 169px;
+}
+.uploadWrapper p {
+  font-family: Work Sans;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+  letter-spacing: 0em;
+  text-align: center;
+  padding: 0px;
+}
+.uploadWrapper input[type="file"]::file-selector-button {
+  display: none;
+}
+#file {
+  display: none;
+  background: grey;
+}
+
+.imgUpload {
+  width: 76px;
+  height: 76px;
+  margin: 10px;
+}
+.uploadLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 173px;
+  height: 36px;
+  border-radius: 50px;
+  background: #b3b3b3;
+}
+
+.wrapForm {
+  display: flex;
+  flex-direction: column;
+}
+#title-input {
+  height: 51px;
+  border: none;
+  box-shadow: 0px 4px 14px 0px #00000017;
+  margin: 5px;
+}
+#category-input {
+  margin: 5px;
+  height: 51px;
+  border: none;
+  background-color: #fff;
+  box-shadow: 0px 4px 14px 0px #00000017;
+}
+.category-input select {
+  font-size: larger;
+  color: black;
+}
+
+.modalButton {
+  width: 237px;
+  height: 36px;
+  background: #a7a7a7;
+  background-color: #a7a7a7;
+  border-radius: 60px;
+  border: none;
 }

@@ -210,23 +210,38 @@ function toggleAdmin() {
       element.classList.add("hidden");
     }
   }
+  elementLogout = document.getElementById("logout");
+  elementLogout.addEventListener("click", () => {
+    localStorage.clear();
+    location.reload();
+  });
+}
+function addModal() {
+  const add = document.getElementById("addModal");
+  const dialogModal2 = document.getElementById("modal2");
+  const closeButton2 = document.getElementById("closeButtonAdd");
+  add.addEventListener("click", () => {
+    dialogModal2.showModal();
+  });
+
+  closeButton2.addEventListener("click", () => {
+    
+    dialogModal2.close();
+    
+  });
 }
 function editModal() {
   const edit = document.getElementById("edit");
   const dialogModal = document.getElementById("modal");
   const closeButton = document.getElementById("closeButton");
+  const wrapModal = document.getElementById(".wrapModal");
+
   edit.addEventListener("click", () => {
     dialogModal.showModal();
   });
 
   closeButton.addEventListener("click", () => {
-    console.log("test");
     dialogModal.close();
-  });
-  window.addEventListener("click", (event) => {
-    if (event.target == dialogModal) {
-      dialogModal.style.display = "none";
-    }
   });
 
   displayWorksModal();
@@ -238,19 +253,55 @@ async function displayWorksModal() {
   for (let work of myWorks) {
     const divElement = document.createElement("div");
     divElement.classList.add("wrapTrash");
+    divElement.id = work.id;
+
     const iconElement = document.createElement("i");
     iconElement.classList.add("fa-solid", "fa-trash-can", "trash", "carre");
     const figureElement = document.createElement("figure");
     const imgElement = document.createElement("img");
+
     imgElement.src = work.imageUrl;
     gallery.appendChild(figureElement);
     figureElement.appendChild(imgElement);
     figureElement.appendChild(divElement);
     divElement.appendChild(iconElement);
+
+    divElement.addEventListener("click", () => {
+      deleteWork(divElement.id);
+    });
   }
+}
+function deleteWork(id) {
+  const token = localStorage.getItem("monToken");
+
+  fetch("http://localhost:5678/api/works/" + id, {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
 }
 
 displayCategoryButton();
 displayWorks(0);
 toggleAdmin();
 editModal();
+addModal();
+
+// const bearerAuth = JSON.parse(window.localStorage.getItem("bearerAuth"));
+//     await fetch("http://localhost:5678/api/works", {
+//             method: "POST",
+//             headers: {
+//                 "Authorization": "Bearer "+bearerAuth.token
+//             },
+//             body: datas
+//         })
+//         .then((response) => {
+//             return response.json();
+//         })
+//         .then((result) => {
+//             addPicture.reset();
+//             displayImageInput();
+//             getWorks();
+//             closeModal("#modal3-2");
+//             openModal("#modal3-1");

@@ -28,7 +28,7 @@
           <a href="../FrontEnd/login_page.html"
             ><li class="isUser">login</li></a
           >
-          <li class="isAdmin">logout</li>
+          <li id="logout" class="isAdmin">logout</li>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
       </nav>
@@ -92,15 +92,66 @@
         </ul>
       </nav>
     </footer>
-    <!-- modal  -->
+    <!-- modal  edit-->
     <dialog id="modal" class="modal">
-      <div class="wrapModal">
+      <div id="wrapModal" class="wrapModal">
         <i class="fa-sharp fa-solid fa-xmark" id="closeButton"></i>
-
         <p>Galerie photo</p>
         <div class="modalWorks"></div>
         <div class="modalLine"></div>
-        <button class="modalAddPicture">Ajouter une photo</button>
+        <button id="addModal" class="modalAddPicture">Ajouter une photo</button>
+      </div>
+    </dialog>
+
+    <!-- modal addpicture -->
+    <dialog class="modal" id="modal2">
+      <div class="wrapModal">
+        <div class="button-container">
+          <i class="fa-solid fa-arrow-left" id="backButton"></i>
+          <i class="fa-sharp fa-solid fa-xmark" id="closeButtonAdd"></i>
+        </div>
+        <div id="add-picture" class="modalWrapAddPicture">
+          <p>Ajout photo</p>
+          <form enctype="multipart/form-data" method="post">
+            <div class="uploadWrapper">
+              <img
+                class="imgUpload"
+                src="assets/icons/picture.png"
+                alt="picture"
+              />
+              <label for="file" class="uploadLabel" name="file">
+                <input
+                  id="file"
+                  type="file"
+                  accept="image/jpg, image/jpeg, image/png"
+                  name="image"
+                  required
+                />
+                + Ajouter photo
+              </label>
+              <p>jpg, png 4Mo max</p>
+            </div>
+            <div class="wrapForm">
+              <label for="title">Titre</label>
+              <input id="title-input" type="text" name="title" required />
+              <label for="category">Catégorie</label>
+              <select
+                id="category-input"
+                class="category-input"
+                name="category"
+                required
+              >
+                <option value="Objets" selected>Objets</option>
+                <option value="Appartement">Appartements</option>
+                <option value="Hotels et Restaurants">
+                  Hotels et Restaurants
+                </option>
+              </select>
+              <div class="modalLine"></div>
+              <input class="modalButton" type="submit" value="Valider" />
+            </div>
+          </form>
+        </div>
       </div>
     </dialog>
   </body>
