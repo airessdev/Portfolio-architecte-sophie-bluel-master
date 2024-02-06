@@ -218,23 +218,34 @@ function toggleAdmin() {
 }
 function addModal() {
   const add = document.getElementById("addModal");
-  const dialogModal2 = document.getElementById("modal2");
-  const closeButton2 = document.getElementById("closeButtonAdd");
+  const dialogModal = document.getElementById("modalAddPicture");
+  const closeButton = document.getElementById("closeButtonAdd");
+  const backButton = document.getElementById("backButton");
   add.addEventListener("click", () => {
-    dialogModal2.showModal();
+    dialogModal.showModal();
   });
 
-  closeButton2.addEventListener("click", () => {
-    
-    dialogModal2.close();
-    
+  closeButton.addEventListener("click", () => {
+    dialogModal.close();
+  });
+  backButton.addEventListener("click", () => {
+    dialogModal.close();
+  });
+
+  const form = document.getElementById("myForm");
+  const but = document.getElementById("but");
+
+  but.addEventListener("click", (event) => {
+    const titre = document.getElementById("title-input").value;
+    const select = document.getElementById("category-input").value;
+    console.log(titre);
+    console.log(select);
   });
 }
 function editModal() {
   const edit = document.getElementById("edit");
-  const dialogModal = document.getElementById("modal");
+  const dialogModal = document.getElementById("modalEdit");
   const closeButton = document.getElementById("closeButton");
-  const wrapModal = document.getElementById(".wrapModal");
 
   edit.addEventListener("click", () => {
     dialogModal.showModal();
@@ -245,6 +256,10 @@ function editModal() {
   });
 
   displayWorksModal();
+}
+function openModal(dialogElement) {
+  const dialog = document.getElementById(dialogElement);
+  dialog.showModal();
 }
 
 async function displayWorksModal() {
@@ -268,6 +283,7 @@ async function displayWorksModal() {
 
     divElement.addEventListener("click", () => {
       deleteWork(divElement.id);
+      console.log("je ferme");
     });
   }
 }
@@ -280,6 +296,8 @@ function deleteWork(id) {
       Authorization: "Bearer " + token,
     },
   });
+  console.log("projet supprimer");
+  addModal();
 }
 
 displayCategoryButton();
@@ -287,21 +305,3 @@ displayWorks(0);
 toggleAdmin();
 editModal();
 addModal();
-
-// const bearerAuth = JSON.parse(window.localStorage.getItem("bearerAuth"));
-//     await fetch("http://localhost:5678/api/works", {
-//             method: "POST",
-//             headers: {
-//                 "Authorization": "Bearer "+bearerAuth.token
-//             },
-//             body: datas
-//         })
-//         .then((response) => {
-//             return response.json();
-//         })
-//         .then((result) => {
-//             addPicture.reset();
-//             displayImageInput();
-//             getWorks();
-//             closeModal("#modal3-2");
-//             openModal("#modal3-1");

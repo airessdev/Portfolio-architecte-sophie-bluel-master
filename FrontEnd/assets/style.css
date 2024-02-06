@@ -414,7 +414,7 @@ nav a {
   font-weight: 400;
   line-height: normal;
 }
-.modal {
+.modalEdit {
   position: relative;
   max-width: 630px;
   height: 688px;
@@ -424,7 +424,7 @@ nav a {
   background-color: #fff;
   border: none;
 }
-.modal::backdrop {
+.modalEdit::backdrop {
   background: #000;
 }
 .wrapModal {
@@ -487,20 +487,22 @@ nav a {
   height: 1px;
   background: #b3b3b3;
 }
-.modalAddPicture {
+.modalAddPictureButton {
   border: none;
   height: 50px;
+  width: 180px;
   font-size: 1.2em;
-  border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
   font-family: "Syne";
   font-weight: 700;
   color: white;
   background-color: #1d6154;
   margin: 2em auto;
-  width: 180px;
   text-align: center;
   border-radius: 60px;
+}
+.modalAddPictureButton:focus-visible {
+  outline: none;
 }
 
 .modalWrapAddPicture {
@@ -584,9 +586,19 @@ nav a {
 
 .modalButton {
   width: 237px;
-  height: 36px;
+  height: 50px;
   background: #a7a7a7;
   background-color: #a7a7a7;
   border-radius: 60px;
+  border: none;
+}
+.modalAddPicture {
+  position: relative;
+  max-width: 630px;
+  height: 688px;
+  margin: auto;
+  padding: 0 105px;
+  border-radius: 10px;
+  background-color: #fff;
   border: none;
 }
