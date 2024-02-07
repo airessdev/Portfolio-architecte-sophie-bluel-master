@@ -1,13 +1,26 @@
 async function getWorks() {
   const works = await fetch("http://localhost:5678/api/works");
   const worksParse = await works.json();
+
   return worksParse;
 }
 
 async function getCategory() {
   const category = await fetch("http://localhost:5678/api/categories");
   const categoryParse = await category.json();
+  console.log(categoryParse);
   return categoryParse;
+}
+async function fillModalCategory() {
+  const category = await getCategory();
+  console.log(category);
+  const formElement = document.getElementById("category-input");
+  for (let myCategory of category) {
+    const optionElement = document.createElement("option");
+    optionElement.value = myCategory.id;
+    optionElement.innerText = myCategory.name;
+    formElement.appendChild(optionElement);
+  }
 }
 
 async function displayCategoryButton() {
@@ -122,7 +135,7 @@ function addModal() {
 
   const form = document.getElementById("myForm");
   const but = document.getElementById("but");
-
+  fillModalCategory();
   but.addEventListener("click", async (event) => {
     event.preventDefault();
     const titre = document.getElementById("title-input").value;
