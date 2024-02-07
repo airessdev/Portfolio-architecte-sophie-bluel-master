@@ -63,7 +63,7 @@ async function login() {
     error.innerText = "Email ou mot de passe incorrect";
   } else {
     localStorage.setItem("monToken", data.token);
-    window.location.href = "index.html";
+    window.location.href = "./index.html";
   }
 
   //token ok
