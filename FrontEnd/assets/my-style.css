@@ -157,11 +157,15 @@ nav a {
   border-radius: 10px;
   background-color: #fff;
   border: none;
+  top: 980px;
+  left: 90px;
 }
 .modalEdit::backdrop {
   background: #00000029;
 }
 .wrapModal {
+  max-width: 630px;
+  height: 684px;
   min-width: 400px;
   padding: 0 105px;
   display: flex;
@@ -329,14 +333,16 @@ nav a {
   border: none;
 }
 .modalAddPicture {
+  padding: 0px;
   position: relative;
   max-width: 630px;
   height: 688px;
   margin: auto;
-  padding: 0 105px;
   border-radius: 10px;
   background-color: #fff;
   border: none;
+  top: 980px;
+  left: 90px;
 }
 
 .homePageEdit {

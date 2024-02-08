@@ -15,6 +15,7 @@ function addModal() {
   const dialogModal = document.getElementById("modalAddPicture");
   const closeButton = document.getElementById("closeButtonAdd");
   const backButton = document.getElementById("backButton");
+  const wrapModal = document.getElementById("wrapModal");
   add.addEventListener("click", () => {
     dialogModal.showModal();
   });
@@ -24,6 +25,12 @@ function addModal() {
   });
   backButton.addEventListener("click", () => {
     dialogModal.close();
+  });
+  dialogModal.addEventListener("click", (event) => {
+    console.log(event.target);
+    if (event.target === dialogModal) {
+      dialogModal.close();
+    }
   });
 
   const fileInput = document.getElementById("file");
@@ -65,6 +72,12 @@ function editModal() {
   });
   closeButton.addEventListener("click", () => {
     dialogModal.close();
+  });
+  dialogModal.addEventListener("click", (event) => {
+    console.log(event.target);
+    if (event.target === dialogModal) {
+      dialogModal.close();
+    }
   });
   displayWorksModal();
   document.addEventListener("click", (event) => {});
