@@ -1,5 +1,3 @@
-
-
 async function getWorks() {
   const works = await fetch("http://localhost:5678/api/works");
   const worksParse = await works.json();
@@ -51,7 +49,7 @@ function cleanGallery() {
 async function displayWorks(categroryIdParam) {
   const myWorks = await getWorks();
   const gallery = document.querySelector(".gallery");
-  gallery.innerHTML = "";
+  cleanGallery();
   for (let work of myWorks) {
     const figureElement = document.createElement("figure");
     const imgElement = document.createElement("img");

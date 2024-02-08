@@ -15,32 +15,47 @@ function addModal() {
   const dialogModal = document.getElementById("modalAddPicture");
   const closeButton = document.getElementById("closeButtonAdd");
   const backButton = document.getElementById("backButton");
-  const wrapModal = document.getElementById("wrapModal");
+  const uploadLabel = document.getElementById("uploadLabel");
+  const img = document.querySelector(".imgUpload");
+
   add.addEventListener("click", () => {
     dialogModal.showModal();
   });
 
   closeButton.addEventListener("click", () => {
     dialogModal.close();
+    fileInput.value = "";
+    uploadLabel.classList.add("uploadLabel");
+    uploadLabel.style.display = "flex";
+    img.src = "assets/icons/picture.png";
   });
   backButton.addEventListener("click", () => {
     dialogModal.close();
+    fileInput.value = "";
+    uploadLabel.classList.add("uploadLabel");
+    uploadLabel.style.display = "flex";
+    img.src = "assets/icons/picture.png";
   });
   dialogModal.addEventListener("click", (event) => {
     console.log(event.target);
     if (event.target === dialogModal) {
       dialogModal.close();
+      fileInput.value = "";
+      uploadLabel.classList.add("uploadLabel");
+      uploadLabel.style.display = "flex";
+      img.src = "assets/icons/picture.png";
     }
   });
-
   const fileInput = document.getElementById("file");
   fileInput.addEventListener("change", (event) => {
     console.log(event);
-    const value = event.target.files[0];
-    const urlValue = URL.createObjectURL(value);
+    const fileValue = event.target.files[0];
+    const urlValue = URL.createObjectURL(fileValue);
     console.log(urlValue);
-    const img = document.querySelector(".imgUpload");
+
     img.src = urlValue;
+    // const uploadLabel = document.getElementById("uploadLabel");
+    uploadLabel.style.display = "none";
   });
 
   const form = document.getElementById("myForm");
@@ -80,7 +95,6 @@ function editModal() {
     }
   });
   displayWorksModal();
-  document.addEventListener("click", (event) => {});
 }
 
 async function displayWorksModal() {
@@ -96,7 +110,6 @@ async function displayWorksModal() {
     iconElement.classList.add("fa-solid", "fa-trash-can", "trash", "carre");
     const figureElement = document.createElement("figure");
     const imgElement = document.createElement("img");
-
     imgElement.src = work.imageUrl;
     gallery.appendChild(figureElement);
     figureElement.appendChild(imgElement);

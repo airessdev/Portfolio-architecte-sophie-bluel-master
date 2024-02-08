@@ -121,14 +121,19 @@
         </div>
         <div id="add-picture" class="modalWrapAddPicture">
           <p>Ajout photo</p>
-          <form enctype="multipart/form-data" method="post">
+          <form enctype="multipart/form-data" method="post" id="my-form">
             <div class="uploadWrapper">
               <img
-                class="imgUpload"
+                class="imgUpload id=imgUpload"
                 src="assets/icons/picture.png"
                 alt="picture"
               />
-              <label for="file" class="uploadLabel" name="file">
+              <label
+                for="file"
+                class="uploadLabel"
+                id="uploadLabel"
+                name="file"
+              >
                 <input
                   id="file"
                   type="file"
