@@ -22,12 +22,16 @@
   flex-shrink: 0;
   border-radius: 60px;
   border: 1px solid #1d6154;
-  background: #1d6154;
-  color: #fff;
+  /* background: #1d6154;*/
+  color: #1d6154;
   padding: 0px;
 }
 .gen {
   color: #1d6154;
+}
+.badge:hover {
+  background: #1d6154;
+  color: #fff;
 }
 
 .badgeContainer {
@@ -284,13 +288,19 @@ nav a {
 }
 #file {
   display: none;
-  background: grey;
+  background: darkgrey;
 }
 
 .imgUpload {
   width: 76px;
   height: 76px;
   margin: 10px;
+}
+.imgAfterUpload {
+  width: 100%;
+  height: 100%;
+  margin: 10px;
+  object-fit: contain;
 }
 .uploadLabel {
   display: flex;
@@ -324,13 +334,23 @@ nav a {
   color: black;
 }
 
-.modalButton {
-  width: 237px;
+.buttonSubmit {
   height: 50px;
-  background: #a7a7a7;
-  background-color: #a7a7a7;
+  background: darkgrey;
   border-radius: 60px;
   border: none;
+}
+.buttonSubmitok {
+  background: #1d6154;
+}
+
+input[type="submit"] {
+  font-family: "Syne";
+  font-weight: 700;
+  color: white;
+  margin: 2em auto;
+  width: 180px;
+  text-align: center;
 }
 .modalAddPicture {
   padding: 0px;
@@ -363,4 +383,9 @@ nav a {
 }
 .homePageEdit .fa-pen-to-square {
   color: #fff;
+}
+.errorForm {
+  display: none;
+  color: #ff3333;
+  justify-content: center;
 }

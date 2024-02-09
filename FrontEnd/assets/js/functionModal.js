@@ -17,6 +17,14 @@ function addModal() {
   const backButton = document.getElementById("backButton");
   const uploadLabel = document.getElementById("uploadLabel");
   const img = document.querySelector(".imgUpload");
+  const buttonSubmit = document.getElementById("buttonSubmit");
+  const titleInput = document.getElementById("title-input");
+  fillModalCategory();
+  titleInput.addEventListener("change", () => {
+    if (titleInput.length !== 0) {
+      buttonSubmit.classList.add("buttonSubmitok");
+    }
+  });
 
   add.addEventListener("click", () => {
     dialogModal.showModal();
@@ -24,46 +32,36 @@ function addModal() {
 
   closeButton.addEventListener("click", () => {
     dialogModal.close();
-    fileInput.value = "";
-    uploadLabel.classList.add("uploadLabel");
-    uploadLabel.style.display = "flex";
-    img.src = "assets/icons/picture.png";
+
+    resetForm();
   });
   backButton.addEventListener("click", () => {
     dialogModal.close();
-    fileInput.value = "";
-    uploadLabel.classList.add("uploadLabel");
-    uploadLabel.style.display = "flex";
-    img.src = "assets/icons/picture.png";
+
+    resetForm();
   });
   dialogModal.addEventListener("click", (event) => {
     console.log(event.target);
     if (event.target === dialogModal) {
       dialogModal.close();
-      fileInput.value = "";
-      uploadLabel.classList.add("uploadLabel");
-      uploadLabel.style.display = "flex";
-      img.src = "assets/icons/picture.png";
+      resetForm();
     }
   });
   const fileInput = document.getElementById("file");
   fileInput.addEventListener("change", (event) => {
-    console.log(event);
     const fileValue = event.target.files[0];
     const urlValue = URL.createObjectURL(fileValue);
     console.log(urlValue);
-
     img.src = urlValue;
-    // const uploadLabel = document.getElementById("uploadLabel");
+    img.classList.add("imgAfterUpload");
     uploadLabel.style.display = "none";
+    document.getElementById("requirementText").style.display = "none";
   });
 
-  const form = document.getElementById("myForm");
-  const but = document.getElementById("but");
-  fillModalCategory();
-  but.addEventListener("click", async (event) => {
+  buttonSubmit.addEventListener("click", async (event) => {
     event.preventDefault();
     const titre = document.getElementById("title-input").value;
+    console.log(titre);
     const select = document.getElementById("category-input").value;
     const fileInput = document.getElementById("file").files[0];
     const formData = new FormData();
@@ -71,12 +69,43 @@ function addModal() {
     formData.append("category", select);
     formData.append("image", fileInput);
 
-    const result = await addWork(formData);
-    if (result) {
-      displayWorks(0);
-      displayWorksModal();
+    if (checkForm()) {
+      const result = await addWork(formData);
+      if (result) {
+        displayWorks(0);
+        displayWorksModal();
+        resetForm();
+        dialogModal.close();
+      }
     }
   });
+}
+function checkForm() {
+  const titre = document.getElementById("title-input").value;
+  const fileInput = document.getElementById("file").files[0];
+  const buttonSubmit = document.getElementById("buttonSubmit");
+  if (titre.length === 0 || fileInput === undefined) {
+    document.getElementById("errorForm").style.display = "flex";
+    document.getElementById("errorForm").innerText =
+      "Veuillez remplir tous les champs";
+    return false;
+  }
+  buttonSubmit.classList.add("buttonSubmitok");
+  return true;
+}
+function resetForm() {
+  const titre = document.getElementById("title-input");
+  const fileInput = document.getElementById("file");
+  const img = document.querySelector(".imgUpload");
+  const uploadLabel = document.getElementById("uploadLabel");
+  uploadLabel.classList.add("uploadLabel");
+  uploadLabel.style.display = "flex";
+  img.src = "assets/icons/picture.png";
+  img.classList.remove("imgAfterUpload");
+  titre.value = "";
+  fileInput.value = "";
+  document.getElementById("errorForm").style.display = "none";
+  document.getElementById("buttonSubmit").classList.remove("buttonSubmitok");
 }
 function editModal() {
   const edit = document.getElementById("edit");
