@@ -1,7 +1,7 @@
 //   email: "sophie.bluel@test.tld",
 //   password: "S0phie",
 
-async function postData(url = "", data = { email: "", password: "" }) {
+async function postData(url = "", credential = { email: "", password: "" }) {
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -9,22 +9,20 @@ async function postData(url = "", data = { email: "", password: "" }) {
     },
     redirect: "follow",
 
-    body: JSON.stringify(data),
+    body: JSON.stringify(credential),
   });
-  console.log(response);
+
   if (response.ok) {
     console.log("communication avec le serveur ok");
   }
-  // if (response.status == 401) {
-
-  // }
-  // if (response.status == 404) {
-
-  // }
+  if (response.status == 401) {
+    console.log("Mauvais Mots de passe");
+  }
+  if (response.status == 404) {
+    console.log("Utilisateur introuvable");
+  }
 
   return response.json();
-  // parses JSON response into native JavaScript objects
-  // objet code http
 }
 
 function getForm() {
@@ -44,11 +42,18 @@ async function login() {
     "http://localhost:5678/api/users/login",
     emailPassword
   );
-  if (data.token == null) {
+  console.log(data);
+  if (data.message) {
     const error = document.querySelector(".hidden-error");
     error.classList.remove("hidden-error");
-    error.innerText = "Email ou mot de passe incorrect";
-  } else {
+    error.innerText = "Email incorrect";
+  }
+  if (data.error) {
+    const error = document.querySelector(".hidden-error");
+    error.classList.remove("hidden-error");
+    error.innerText = "Mot de passe incorrect";
+  }
+  if (data.token) {
     localStorage.setItem("monToken", data.token);
     window.location.href = "./index.html";
   }

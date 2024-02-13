@@ -107,6 +107,7 @@ function resetForm() {
   document.getElementById("errorForm").style.display = "none";
   document.getElementById("buttonSubmit").classList.remove("buttonSubmitok");
 }
+
 function editModal() {
   const edit = document.getElementById("edit");
   const dialogModal = document.getElementById("modalEdit");
