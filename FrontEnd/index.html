@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Sophie Bluel - Architecte d'intérieur</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,12 +17,9 @@
       src="https://kit.fontawesome.com/c4adc1590d.js"
       crossorigin="anonymous"
     ></script>
-    <script src="./assets/js/accueil.js" defer async></script>
     <script src="./assets/js/functionModal.js" defer async></script>
     <script src="./assets/js/displayToggleAdmin.js" defer async></script>
-
-    <script type="module" src="./assets/js/functionModal.js"></script>
-    <script type="module" src="./assets/js/displayToggleAdmin.js"></script>
+    <script src="./assets/js/accueil.js" defer async></script>
   </head>
   <body>
     <div class="homePageEdit" id="homePageEdit">
@@ -35,8 +32,8 @@
         <ul>
           <li>projets</li>
           <li>contact</li>
-          <a href="./login_page.html"><li class="isUser">login</li></a>
-          <li id="logout" class="isAdmin">logout</li>
+          <li class="adminOverlayOff"><a href="./login_page.html">login</a></li>
+          <li id="logout" class="adminOverlayOn">logout</li>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
       </nav>
@@ -68,13 +65,13 @@
       <section id="portfolio">
         <h2>
           Mes Projets
-          <a class="edit-projet isAdmin" id="edit">
+          <a class="edit-projet adminOverlayOn" id="edit">
             <i class="fa-sharp fa-solid fa-pen-to-square"></i>
             Modifier
           </a>
         </h2>
 
-        <div class="badgeContainer isUser"></div>
+        <div class="badgeContainer adminOverlayOff"></div>
 
         <div class="gallery"></div>
       </section>
@@ -100,9 +97,9 @@
         </ul>
       </nav>
     </footer>
-    <!-- modal  edit-->
+    <!-- modal  photoGallery-->
     <dialog id="modalEdit" class="modalEdit">
-      <div id="wrapModal" class="wrapModal">
+      <div class="wrapModal">
         <i class="fa-sharp fa-solid fa-xmark" id="closeButton"></i>
         <p>Galerie photo</p>
         <div class="modalWorks"></div>
@@ -115,7 +112,7 @@
 
     <!-- modal addpicture -->
     <dialog class="modalAddPicture" id="modalAddPicture">
-      <div class="wrapModal" id="wrapModal">
+      <div class="wrapModal">
         <div class="button-container">
           <i class="fa-solid fa-arrow-left" id="backButton"></i>
           <i class="fa-sharp fa-solid fa-xmark" id="closeButtonAdd"></i>
@@ -129,12 +126,7 @@
                 src="assets/icons/picture.png"
                 alt="picture"
               />
-              <label
-                for="file"
-                class="uploadLabel"
-                id="uploadLabel"
-                name="file"
-              >
+              <label for="file" class="uploadLabel" id="uploadLabel">
                 <input
                   id="file"
                   type="file"
@@ -147,14 +139,13 @@
               <p id="requirementText">jpg, png 4Mo max</p>
             </div>
             <div class="wrapForm">
-              <label for="title">Titre</label>
+              <label for="title-input">Titre</label>
               <input id="title-input" type="text" name="title" required />
-              <label for="category">Catégorie</label>
+              <label for="category-input">Catégorie</label>
               <select
                 id="category-input"
                 class="category-input"
                 name="category"
-                required
               >
                 <!-- Autofill option from backend function fillModalCategory()-->
               </select>

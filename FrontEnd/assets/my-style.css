@@ -3,7 +3,6 @@
   flex-shrink: 0;
   border-radius: 60px;
   border: 1px solid #1d6154;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,6 +47,7 @@
 header a {
   text-decoration: none;
 }
+
 .connexion {
   width: 50%;
   padding: 10% 25%;
@@ -383,6 +383,9 @@ input[type="submit"] {
 }
 .homePageEdit .fa-pen-to-square {
   color: #fff;
+}
+.headerClass {
+  margin: 109px 0px;
 }
 .errorForm {
   display: none;

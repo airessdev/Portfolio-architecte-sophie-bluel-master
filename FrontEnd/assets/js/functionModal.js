@@ -1,6 +1,5 @@
 async function fillModalCategory() {
   const category = await getCategory();
-  console.log(category);
   const formElement = document.getElementById("category-input");
   for (let myCategory of category) {
     const optionElement = document.createElement("option");
@@ -11,6 +10,7 @@ async function fillModalCategory() {
 }
 
 function addModal() {
+  //expliciter le nom de variable
   const add = document.getElementById("addModal");
   const dialogModal = document.getElementById("modalAddPicture");
   const closeButton = document.getElementById("closeButtonAdd");
@@ -41,7 +41,6 @@ function addModal() {
     resetForm();
   });
   dialogModal.addEventListener("click", (event) => {
-    console.log(event.target);
     if (event.target === dialogModal) {
       dialogModal.close();
       resetForm();
@@ -51,7 +50,7 @@ function addModal() {
   fileInput.addEventListener("change", (event) => {
     const fileValue = event.target.files[0];
     const urlValue = URL.createObjectURL(fileValue);
-    console.log(urlValue);
+
     img.src = urlValue;
     img.classList.add("imgAfterUpload");
     uploadLabel.style.display = "none";
@@ -61,7 +60,7 @@ function addModal() {
   buttonSubmit.addEventListener("click", async (event) => {
     event.preventDefault();
     const titre = document.getElementById("title-input").value;
-    console.log(titre);
+
     const select = document.getElementById("category-input").value;
     const fileInput = document.getElementById("file").files[0];
     const formData = new FormData();
@@ -83,6 +82,7 @@ function addModal() {
 function checkForm() {
   const titre = document.getElementById("title-input").value;
   const fileInput = document.getElementById("file").files[0];
+
   const buttonSubmit = document.getElementById("buttonSubmit");
   if (titre.length === 0 || fileInput === undefined) {
     document.getElementById("errorForm").style.display = "flex";
@@ -106,9 +106,10 @@ function resetForm() {
   fileInput.value = "";
   document.getElementById("errorForm").style.display = "none";
   document.getElementById("buttonSubmit").classList.remove("buttonSubmitok");
+  document.getElementById("requirementText").style.display = "block";
 }
 
-function editModal() {
+function photoGalleryModal() {
   const edit = document.getElementById("edit");
   const dialogModal = document.getElementById("modalEdit");
   const closeButton = document.getElementById("closeButton");
@@ -119,7 +120,6 @@ function editModal() {
     dialogModal.close();
   });
   dialogModal.addEventListener("click", (event) => {
-    console.log(event.target);
     if (event.target === dialogModal) {
       dialogModal.close();
     }

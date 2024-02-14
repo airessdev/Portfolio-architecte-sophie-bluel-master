@@ -3,7 +3,6 @@ function toggleAdmin() {
 
   if (localStorage.getItem("monToken") != null) {
     admin = true;
-
     const adminHidding = document.querySelectorAll(".isUser");
     const header = document.getElementById("headerId");
     header.style.margin = "109px 0px";

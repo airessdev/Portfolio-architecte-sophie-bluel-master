@@ -8,7 +8,7 @@ async function getWorks() {
 async function getCategory() {
   const category = await fetch("http://localhost:5678/api/categories");
   const categoryParse = await category.json();
-  console.log(categoryParse);
+
   return categoryParse;
 }
 
@@ -46,8 +46,9 @@ function cleanGallery() {
   gallery.innerHTML = "";
 }
 
-async function displayWorks(categroryIdParam) {
+async function displayWorks(categoryIdParam) {
   const myWorks = await getWorks();
+  console.log(myWorks);
   const gallery = document.querySelector(".gallery");
   cleanGallery();
   for (let work of myWorks) {
@@ -57,36 +58,35 @@ async function displayWorks(categroryIdParam) {
     imgElement.src = work.imageUrl;
     figcaptionElement.innerText = work.title;
     figcaptionElement.id = work.categoryId;
-    if (figcaptionElement.id == categroryIdParam) {
+    if (figcaptionElement.id == categoryIdParam) {
       gallery.appendChild(figureElement);
       figureElement.appendChild(imgElement);
       figureElement.appendChild(figcaptionElement);
     }
-    if (categroryIdParam == 0) {
+    if (categoryIdParam == 0) {
       gallery.appendChild(figureElement);
       figureElement.appendChild(imgElement);
       figureElement.appendChild(figcaptionElement);
     }
   }
 }
-function toggleAdmin() {
+function toggleAdminOverlay() {
   let admin = false;
 
   if (localStorage.getItem("monToken") != null) {
     admin = true;
 
-    const adminHidding = document.querySelectorAll(".isUser");
+    const adminOverlayOff = document.querySelectorAll(".adminOverlayOff");
     const header = document.getElementById("headerId");
-    header.style.margin = "109px 0px";
-    for (let element of adminHidding) {
+    header.classList.add("headerClass");
+    for (let element of adminOverlayOff) {
       element.classList.add("hidden");
     }
   } else {
     const homePageEdit = document.getElementById("homePageEdit");
-    homePageEdit.style.display = "none";
-
-    const notAdmin = document.querySelectorAll(".isAdmin");
-    for (let element of notAdmin) {
+    homePageEdit.classList.replace("homePageEdit", "hidden");
+    const adminOverlayOn = document.querySelectorAll(".adminOverlayOn");
+    for (let element of adminOverlayOn) {
       element.classList.add("hidden");
     }
   }
@@ -99,6 +99,6 @@ function toggleAdmin() {
 
 displayCategoryButton();
 displayWorks(0);
-toggleAdmin();
-editModal();
+toggleAdminOverlay();
+photoGalleryModal();
 addModal();

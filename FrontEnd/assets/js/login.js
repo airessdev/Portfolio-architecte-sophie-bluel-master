@@ -8,16 +8,13 @@ async function postData(url = "", credential = { email: "", password: "" }) {
       "Content-Type": "application/json",
     },
     redirect: "follow",
-
     body: JSON.stringify(credential),
   });
 
   if (response.ok) {
     console.log("communication avec le serveur ok");
   }
-  if (response.status == 401) {
-    console.log("Mauvais Mots de passe");
-  }
+
   if (response.status == 404) {
     console.log("Utilisateur introuvable");
   }
@@ -42,17 +39,13 @@ async function login() {
     "http://localhost:5678/api/users/login",
     emailPassword
   );
-  console.log(data);
+
   if (data.message) {
     const error = document.querySelector(".hidden-error");
     error.classList.remove("hidden-error");
-    error.innerText = "Email incorrect";
+    error.innerText = "Email ou mots de passe incorrect";
   }
-  if (data.error) {
-    const error = document.querySelector(".hidden-error");
-    error.classList.remove("hidden-error");
-    error.innerText = "Mot de passe incorrect";
-  }
+
   if (data.token) {
     localStorage.setItem("monToken", data.token);
     window.location.href = "./index.html";
