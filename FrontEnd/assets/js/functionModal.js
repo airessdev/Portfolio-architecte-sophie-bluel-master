@@ -9,8 +9,8 @@ async function fillModalCategory() {
   }
 }
 
-function addModal() {
-  //expliciter le nom de variable
+function uploadProjectModal() {
+  
   const add = document.getElementById("addModal");
   const dialogModal = document.getElementById("modalAddPicture");
   const closeButton = document.getElementById("closeButtonAdd");

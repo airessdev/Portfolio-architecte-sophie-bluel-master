@@ -47,14 +47,14 @@ function cleanGallery() {
 }
 
 async function displayWorks(categoryIdParam) {
-  const myWorks = await getWorks();
-  console.log(myWorks);
+  const works = await getWorks();
   const gallery = document.querySelector(".gallery");
   cleanGallery();
-  for (let work of myWorks) {
+  for (let work of works) {
     const figureElement = document.createElement("figure");
     const imgElement = document.createElement("img");
     const figcaptionElement = document.createElement("figcaption");
+
     imgElement.src = work.imageUrl;
     figcaptionElement.innerText = work.title;
     figcaptionElement.id = work.categoryId;
@@ -98,7 +98,7 @@ function toggleAdminOverlay() {
 }
 
 displayCategoryButton();
-displayWorks(0);
-toggleAdminOverlay();
 photoGalleryModal();
-addModal();
+uploadProjectModal();
+toggleAdminOverlay();
+displayWorks(0);
