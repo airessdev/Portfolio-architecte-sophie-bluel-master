@@ -339,6 +339,7 @@ nav a {
   background: darkgrey;
   border-radius: 60px;
   border: none;
+  font-size: 1.2em;
 }
 .buttonSubmitok {
   background: #1d6154;

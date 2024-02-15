@@ -239,6 +239,16 @@ li:hover {
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+#contact input[type="submit"] {
+  font-family: "Syne";
+  font-weight: 700;
+  color: white;
+  margin: 2em auto;
+  width: 180px;
+  text-align: center;
+  border-radius: 60px;
+  background-color: #1d6154;
+}
 #contact label {
   margin: 2em 0 1em 0;
 }
